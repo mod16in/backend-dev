@@ -1,3 +1,27 @@
+import connectDB from "./DB/connectDB.js";
+import express from "express"
+    
+const app = express();
+const port = process.env.PORT || 9040;
+
+connectDB()
+.then(()=>{
+    app.listen(port, () => {
+        console.log(`App is running on port : ${port}`);
+    })
+})
+.catch((err) => {
+    console.log("MONGO db connection failed !! ", err);
+})
+
+
+
+
+
+
+
+
+
 // require('dotenv').config({path: './env'})        // this method is not working because of type: module .. this is used in common js
 
 /* import dotenv from "dotenv"
@@ -6,33 +30,6 @@ dotenv.config({
 })
     since you have defined to include env variables in package.json only, so you do not have to explicitly call config file of dotenv 
 */ 
-
-import connectDB from "./DB/connectDB.js";
-import express from "express"
-    
-const app = express();
-
-connectDB();
-
-app.get('/', (request, response) => {
-    response.send("<h1> Heading 1: This is base route </h1>");
-})
-
-app.get('/new', (request, response) => {
-    response.send("<h3> Heading 3: This is a new route </h3>");
-})
-
-app.listen(`${process.env.PORT}`, ()=>{
-    console.log(`app listening on port ${process.env.PORT}`);
-})
-
-
-
-
-
-
-
-
 
 
 

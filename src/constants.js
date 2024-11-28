@@ -1,1 +1,1 @@
-export const DB_NAME = "videotube";
+export const DB_NAME = "videotube";         // named export -- other option then default export(single default expo, but many named exp)

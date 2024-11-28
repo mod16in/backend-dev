@@ -119,4 +119,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# flow of project 
+flow.md
+
 # End of https://mrkandreev.name/snippets/gitignore-generator/#Node
