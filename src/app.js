@@ -14,3 +14,12 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}))    // allows readin
 app.use(express.static("public"))               // allows to store and read public data in public folder
 
 app.use(cookieParser())     // allows to set and manage cookie in client browser
+
+// import router 
+import userRouter from "./routes/user.routes.js"
+
+app.use("/", userRouter);       // /api/v1 is industry standard 
+// http://localhost:9000/api/v1/users/register
+// here we have just router the incoming request containing /users to the userRouter(where we defined all routes for /users)
+
+export { app }
