@@ -14,3 +14,6 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}))    // allows readin
 app.use(express.static("public"))               // allows to store and read public data in public folder
 
 app.use(cookieParser())     // allows to set and manage cookie in client browser
+
+
+export default { app }
