@@ -8,9 +8,9 @@ const asyncHandler = (reqHandler)=>{
 }
 
 
-// const asyncHandler = (reqHandler) => async(err, req, res, next) => {
+// const asyncHandler = (reqHandler) => async(req, res, next) => {
 //     try {
-//         await reqHandler(err, req, res, next);
+//         await reqHandler(req, res, next);
 //     } catch (error) {
 //         res.status(error.code || 500).json({
 //             success: false, 
