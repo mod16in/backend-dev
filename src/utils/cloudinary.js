@@ -22,4 +22,5 @@ const uploadOnCloudinary = async function(localFilePath){
     }
 }
 
-export {uploadOnCloudinary}
+export { uploadOnCloudinary }
+// export like these cannot be imported with other name but those with default export can be named differently while importing
