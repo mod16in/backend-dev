@@ -68,7 +68,7 @@ userSchema.pre("save", async function(next) {
     })*/
 })
 userSchema.methods.isPasswordCorrect = async function (pass) {
-    return await bcrypt.compare(password, this.password);       // this returns true or false
+    return await bcrypt.compare(pass, this.password);       // this returns true or false
 }
 
 
@@ -100,5 +100,5 @@ userSchema.methods.generateRefreshToken = function() {
     )
 }
 
-export const User = mongoose.model('User', 'userSchema');
+export const User = mongoose.model('User', userSchema);
 //  this is for in-app use  --  this is name used in db - Users(adds s, es automatically)

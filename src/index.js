@@ -26,7 +26,7 @@ connectDB()
 
 /* import dotenv from "dotenv"
 dotenv.config({
-    path: './env'
+    path: './.env'
 })
     since you have defined to include env variables in package.json only, so you do not have to explicitly call config file of dotenv 
 */ 
