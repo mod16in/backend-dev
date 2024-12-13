@@ -27,24 +27,28 @@ const registerUser = asyncHandler(async (req, res) => {
     });
     
     if(existedUser){
-        // console.log(existedUser);
         // const removeUser = await User.deleteOne({_id: existedUser._id});
-        throw new ApiError(409, "User already exists");
+        throw new ApiError(409, "User already exists.");
     }
 
-    const avatarLocalDirPath = req.files?.avatar[0]?.path;
     const coverImageLocalDirPath = '';
-    if(req.files && req.files.coverImage){
-        coverImageLocalDirPath = req.files.coverImage[0]?.path;
+    const avatarLocalDirPath = '';
+    if(req.files){
+        if(req.files.coverImage){
+            coverImageLocalDirPath = req.files.coverImage[0]?.path;
+        }
+        if(req.files.avatar){
+            avatarLocalDirPath = req.files.avatar[0]?.path;
+        }
     }
 
     if(!avatarLocalDirPath){
-        throw new ApiError(400, "Avatar file is required");
+        throw new ApiError(400, "Avatar file is required.");
     }
     const avatar = await uploadOnCloudinary(avatarLocalDirPath);
     const coverImage = await uploadOnCloudinary(coverImageLocalDirPath);    
     if(!avatar){
-        throw new ApiError(500, "Server error while file uploading");
+        throw new ApiError(500, "Server error while file uploading.");
     }
 
     const user = await User.create({
@@ -59,7 +63,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const createdUser = await User.findById(user._id).select("-password -refreshToken")
 
     if(!createdUser){
-        throw new ApiError(500, "Server error while performing database operation");
+        throw new ApiError(500, "Server error while performing database operation.");
     }
 
     return res.status(201).json(new ApiResponse(201, "User got registered successfully!", createdUser));

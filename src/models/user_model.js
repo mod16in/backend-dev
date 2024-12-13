@@ -42,6 +42,11 @@ const userSchema = new Schema(
             type: String, 
             required: [true, 'Password is required.']
         },
+        is_deleted: {
+            type: String,
+            enum: ['0', '1'],
+            default: '0'
+        },
         refresh_token: {
             type: String
         }

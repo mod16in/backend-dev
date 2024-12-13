@@ -15,11 +15,11 @@ app.use(express.static("public"))                               // allows to sto
 app.use(cookieParser())                                         // allows to set and manage cookie in client browser
 
 
-import userRouter from "./routes/user.routes.js"
-
-app.use("/api/v1/users", userRouter);
 // http://localhost:9000/api/v1/users/register
 // here we have just routed the incoming request containing /users to the userRouter(where we defined all routes for /users)
+import userRouter from "./routes/user.routes.js"
+app.use("/api/v1/users", userRouter);
+
 
 export { app }
 // export like these cannot be imported with other name but those with default export can be named differently while importing
